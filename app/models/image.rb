@@ -1,3 +1,3 @@
 class Image < ActiveRecord::Base
-  has_many :conversions, dependent: :destroy
+  has_many :operations, dependent: :destroy
 end

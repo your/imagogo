@@ -1,7 +1,7 @@
-class CreateConversions < ActiveRecord::Migration
+class CreateOperations < ActiveRecord::Migration
   def change
-    create_table :conversions do |t|
-      t.string :conversion_type
+    create_table :operations do |t|
+      t.string :operation_type
       t.datetime :enqueue_date
       t.datetime :start_date
       t.datetime :end_time

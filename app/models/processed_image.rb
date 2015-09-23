@@ -1,3 +1,3 @@
 class ProcessedImage < ActiveRecord::Base
-  belongs_to :conversions
+  belongs_to :operations
 end

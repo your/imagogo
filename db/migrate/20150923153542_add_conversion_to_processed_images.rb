@@ -1,5 +1,5 @@
-class AddConversionToProcessedImages < ActiveRecord::Migration
+class AddImageToProcessedImages < ActiveRecord::Migration
   def change
-    add_reference :processed_images, :processed_image, index: true, foreign_key: true
+    add_reference :processed_images, :image, index: true, foreign_key: true
   end
 end
