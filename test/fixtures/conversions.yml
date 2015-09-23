@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conversion_type: MyString
+  enqueue_date: 2015-09-23 17:31:35
+  start_date: 2015-09-23 17:31:35
+  end_time: 2015-09-23 17:31:35
+  status: MyString
+
+two:
+  conversion_type: MyString
+  enqueue_date: 2015-09-23 17:31:35
+  start_date: 2015-09-23 17:31:35
+  end_time: 2015-09-23 17:31:35
+  status: MyString
