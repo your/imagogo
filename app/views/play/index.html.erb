@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="col-xs-1">lol</div>
+	<div class="col-xs-8">
+	<% @processed_images.each do |pi| %>
+		<img src="<%= pi.local_src %>">
+	<% end %>
+</div>
+	<div class="col-xs-3">lol</div>
+</div>

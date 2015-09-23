@@ -15,3 +15,11 @@
  */
 
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+
+body {
+    font-family: Lato;
+    font-size: 16px;
+    /* line-height: 1.42857143; */
+    color: #333;
+    background-color: #fff;
+}

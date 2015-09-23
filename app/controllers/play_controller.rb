@@ -1,4 +1,4 @@
-class PlayController < ActionController::Base
+class PlayController < ApplicationController
   def index
     @processed_images = ProcessedImage.all
     @last_operations = Operation.all.limit(10)

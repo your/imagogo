@@ -1,5 +1,6 @@
 class Image < ActiveRecord::Base
   has_many :operations, dependent: :destroy
+  has_one :converted_image, dependent: :destroy
   
   def resize
     if !local_src.nil?

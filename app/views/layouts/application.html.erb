@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<%= nav_bar brand: "Imagogo", brand_link: play_index_path, responsive: true do %>
+    <%= menu_group do %>
+    	<%= menu_item "Processed", play_index_path %>
+        <%= menu_item "Operations", play_index_path %>
+    <% end %>
+<% end%>
+
 <%= yield %>
 
 </body>
