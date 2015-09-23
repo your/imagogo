@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   
   def resize
     if !local_src.nil?
-      OpResizeWorker.perform_async(self.local_src, 140, 140)
+      OpResizeWorker.perform_async(self.id, self.local_src, 540, 540)
     end
   end
   
