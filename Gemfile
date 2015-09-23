@@ -5,6 +5,7 @@ ruby '2.2.2'
 # mygems
 gem 'sidekiq'
 gem 'mini_magick'
+gem 'chunky_png'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

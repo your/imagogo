@@ -7,4 +7,10 @@ class Image < ActiveRecord::Base
     end
   end
   
+  def process
+    if !resized_src.nil?
+      OpProcessWorker.perform_async(self.id, self.resized_src)
+    end
+  end
+  
 end
