@@ -13,19 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150923153542) do
 
-  create_table "conversions", force: :cascade do |t|
-    t.string   "conversion_type"  null: false
-    t.datetime "enqueue_date"     null: false
-    t.datetime "start_date"
-    t.datetime "end_time"
-    t.string   "status"           null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "image_id"         null: false
-  end
-
-  add_index "conversions", ["image_id"], name: "index_conversions_on_image_id"
-
   create_table "images", force: :cascade do |t|
     t.string   "remote_src"
     t.string   "local_src"
@@ -34,13 +21,26 @@ ActiveRecord::Schema.define(version: 20150923153542) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "processed_images", force: :cascade do |t|
-    t.string   "local_src"           null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "processed_image_id"  null: false
+  create_table "operations", force: :cascade do |t|
+    t.string   "operation_type"
+    t.datetime "enqueue_date"
+    t.datetime "start_date"
+    t.datetime "end_time"
+    t.string   "status"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "image_id"
   end
 
-  add_index "processed_images", ["processed_image_id"], name: "index_processed_images_on_processed_image_id"
+  add_index "operations", ["image_id"], name: "index_operations_on_image_id"
+
+  create_table "processed_images", force: :cascade do |t|
+    t.string   "local_src"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "image_id"
+  end
+
+  add_index "processed_images", ["image_id"], name: "index_processed_images_on_image_id"
 
 end
