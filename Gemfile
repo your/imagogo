@@ -6,6 +6,7 @@ ruby '2.2.2'
 gem 'sidekiq'
 gem 'mini_magick'
 gem 'chunky_png'
+gem "twitter-bootstrap-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
