@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923153542) do
+ActiveRecord::Schema.define(version: 20150923160746) do
 
   create_table "images", force: :cascade do |t|
     t.string   "remote_src"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150923153542) do
     t.string   "status"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "image_id"
+    t.integer  "image_id",       null: false
   end
 
   add_index "operations", ["image_id"], name: "index_operations_on_image_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150923153542) do
     t.string   "local_src"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "image_id"
+    t.integer  "image_id",   null: false
   end
 
   add_index "processed_images", ["image_id"], name: "index_processed_images_on_image_id"
