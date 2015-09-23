@@ -1,6 +1,6 @@
-class OpWorker
+class OpResizeWorker
   include Sidekiq::Worker
-  def resize(image_local, width, height)
+  def perform(image_local, width, height)
     image = MiniMagick::Image.new(image_local) do |b|
       b.resize "#{width}x#{height}>"
       b.format "png"
