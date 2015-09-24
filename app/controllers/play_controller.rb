@@ -9,7 +9,12 @@ class PlayController < ApplicationController
     @image = Image.new
     @image.save
     @image.upload(upload_params)
-    redirect_to play_index_path
+    redirect_to unprocessed_path
+  end
+  
+  def unprocessed
+    @unprocessed_images = Image.joins("LEFT JOIN processed_images ON images.id = processed_images.image_id WHERE processed_images.image_id IS NULL")
+    p @unprocessed_images
   end
   
   def index

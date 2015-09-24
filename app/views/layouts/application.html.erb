@@ -10,10 +10,17 @@
 
 <%= nav_bar brand: "Imagogo", brand_link: play_index_path, responsive: true do %>
     <%= menu_group do %>
-    	<%= menu_item "processed", play_index_path %>
-        <%= menu_item "operations", play_index_path %>
+    	<%= menu_item "unprocessed", unprocessed_path %>
+        <%= menu_item "operations", op_index_path %>
     <% end %>
 <% end%>
+
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-8">
+	</div>
+	<div class="col-xs-3"></div>
+</div>
 
 <%= yield %>
 

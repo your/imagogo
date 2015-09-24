@@ -8,12 +8,14 @@
 	</div>
 	<div class="col-xs-3"></div>
 </div>
+
+<% @unprocessed_images.each do |pi| %>
 <div class="row">
 	<div class="col-xs-1"></div>
-	<div class="col-xs-8">
-	<% @processed_images.each do |pi| %>
-		<img src="<%= pi.local_src.gsub('public/','') %>">
-	<% end %>
-</div>
+	<div class="col-xs-8 img-box">	
+	  <div class="img-box-controls">process</div>
+	  <div class="img-box-img"><img src="<%= pi.local_src.gsub('public/','') %>"></div>
+	</div>
 	<div class="col-xs-3"></div>
 </div>
+<% end %>
