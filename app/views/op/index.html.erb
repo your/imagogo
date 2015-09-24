@@ -1,6 +1,19 @@
 <div class="row">
 	<div class="col-xs-1"></div>
 	<div class="col-xs-8">
+		<%= form_for :upload do |f| %>
+			<label class="btn btn-lg btn-secondary" for="upload_image">
+			<%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg',  style: 'display:none;', onchange: "this.form.submit();" %>upload image</label>
+		<% end %><br><br>
+	</div>
+	<div class="col-xs-3"></div>
+</div>
+<div class="row">
+	<div class="col-xs-2"></div>
+	<div class="col-xs-8">
+		<% if @operations.count == 0 %>
+			<h4>No operations.</h4>
+		<% else %>
 		<table class="table table-hover">
 			<thead>
 			        <tr>
@@ -20,11 +33,19 @@
 			          <td><%= op.operation_type %></td>
 			          <td><%= op.created_at %></td>
 			          <td><%= op.updated_at %></td>
-			          <td><%= op.status %></td>
+			          <td>
+						<% case op.status
+					  		when 'ok' %><span class="label label-success">
+							<% when 'ko' %><span class="label label-danger">
+							<% when 'running' %><span class="label label-warning">
+						<% end %>
+						<%= op.status %></span>
+					  </td>
 			        </tr>
 				<% end %>
 			</tbody>
 		</table>
+		<% end %>
 	</div>
-	<div class="col-xs-3"></div>
+	<div class="col-xs-2"></div>
 </div>

@@ -24,6 +24,12 @@ body {
     background-color: #fff;
 }
 
+a {
+    color: #333;
+    text-decoration: none;
+}
+
 .img-box {
 	float: right;
+	padding-bottom: 65px;
 }

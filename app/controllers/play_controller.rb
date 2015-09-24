@@ -18,7 +18,7 @@ class PlayController < ApplicationController
   end
   
   def index
-    @processed_images = ProcessedImage.all
+    @processed_images = ProcessedImage.all.order('id DESC')
     @last_operations = Operation.all.limit(10)
     @processing = Operation.all.where(status: 'running').joins(:image)
     
@@ -27,4 +27,13 @@ class PlayController < ApplicationController
     p @processing
   end
   
+  def processs
+    image_id = params[:id]
+    i = Image.find_by_id(image_id)
+    i.process
+    
+    respond_to do |format|
+      format.json { render :json => 'yeah' }
+    end
+  end
 end

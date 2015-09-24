@@ -9,13 +9,28 @@
 	<div class="col-xs-3"></div>
 </div>
 
-<% @unprocessed_images.each do |pi| %>
-<div class="row">
-	<div class="col-xs-1"></div>
-	<div class="col-xs-8 img-box">	
-	  <div class="img-box-controls">process</div>
-	  <div class="img-box-img"><img src="<%= pi.local_src.gsub('public/','') %>"></div>
+<% if @unprocessed_images.count == 0 %>
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-8 img-box">
+				<h4>No images to process.</h4>
+		</div>
 	</div>
-	<div class="col-xs-3"></div>
-</div>
+<% else %>	
+	<% @unprocessed_images.each do |pi| %>
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-8 img-box">
+	  	  		<div class="img-box-controls"><i class="fa fa-circle-o-notch fa-spin" id="loading" style="display:none;"></i>
+					<%= link_to "process", processs_path(id: pi.id), remote: true %></div>
+	  			<div class="img-box-img">
+					<% if pi.local_src.nil? %>
+					<script>$('#loading').show()</script>
+					<% else %>
+						<img src="<%= pi.local_src.gsub('public/','') %>"></div>
+					<% end %>
+			</div>
+			<div class="col-xs-3"></div>
+		</div>
+	<% end %>	
 <% end %>

@@ -27,7 +27,9 @@ class OpUploadWorker
     File.open(Rails.root.join('public', 'imgs', original_filename), 'wb') do |file|
       file.write(file_read)
     end
-    Image.find_by_id(image_id).update(local_src: "public/imgs/#{original_filename}")
+    i = Image.find_by_id(image_id)
+    i.update(local_src: "public/imgs/#{original_filename}")
     @operation.update(status: 'ok')
+    i.resize
   end
 end
