@@ -13,7 +13,7 @@ class PlayController < ApplicationController
   end
   
   def unprocessed
-    @unprocessed_images = Image.joins("LEFT JOIN processed_images ON images.id = processed_images.image_id WHERE processed_images.image_id IS NULL")
+    @unprocessed_images = Image.joins("LEFT JOIN processed_images ON images.id = processed_images.image_id WHERE processed_images.image_id IS NULL").order('id DESC')
     p @unprocessed_images
   end
   
@@ -35,5 +35,11 @@ class PlayController < ApplicationController
     respond_to do |format|
       format.json { render :json => 'yeah' }
     end
+  end
+  
+  def destroy
+    image_id = params[:id]
+    i = ProcessedImage.find_by_id(image_id)
+    i.destroy
   end
 end

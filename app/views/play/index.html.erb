@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-xs-4"></div>
 			<div class="col-xs-8 img-box">
-	  	  		<div class="img-box-controls"><i class="fa fa-circle-o-notch fa-spin" id="loading" style="display:none;"></i></div>
+	  	  		<div class="img-box-controls"><i class="fa fa-circle-o-notch fa-spin" id="loading" style="display:none;"></i><%= link_to "delete", destroy_img_path(id: pi.id), method: :delete, remote: true %></div>
 	  			<div class="img-box-img"><img src="<%= pi.local_src.gsub('public/','') %>"></div>
 			</div>
 		</div>
