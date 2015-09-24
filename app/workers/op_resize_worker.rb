@@ -2,7 +2,7 @@ require 'base64'
 class OpResizeWorker
   
   def initialize
-    @operation = Operation.new(operation_type: 'process', status: 'running')
+    @operation = Operation.new(operation_type: 'resize', status: 'running')
   end
   
   include Sidekiq::Worker

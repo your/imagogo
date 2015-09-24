@@ -1,16 +1,6 @@
-<div class="row">
-	<div class="col-xs-1"></div>
-	<div class="col-xs-8">
-		<%= form_for :upload do |f| %>
-			<label class="btn btn-lg btn-secondary" for="upload_image">
-			<%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg',  style: 'display:none;', onchange: "this.form.submit();" %>upload image</label>
-		<% end %>
-	</div>
-	<div class="col-xs-3"></div>
-</div>
 <% if @processed_images.count == 0 %>
 	<div class="row">
-		<div class="col-xs-1"></div>
+		<div class="col-xs-4"></div>
 		<div class="col-xs-8 img-box">
 				<h4>No images processed so far.</h4>
 		</div>
@@ -18,12 +8,11 @@
 <% else %>	
 	<% @processed_images.each do |pi| %>
 		<div class="row">
-			<div class="col-xs-1"></div>
+			<div class="col-xs-4"></div>
 			<div class="col-xs-8 img-box">
 	  	  		<div class="img-box-controls"><i class="fa fa-circle-o-notch fa-spin" id="loading" style="display:none;"></i></div>
 	  			<div class="img-box-img"><img src="<%= pi.local_src.gsub('public/','') %>"></div>
 			</div>
-			<div class="col-xs-3"></div>
 		</div>
 	<% end %>	
 <% end %>

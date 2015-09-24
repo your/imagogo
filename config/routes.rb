@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :op
   get 'unprocessed' => 'play#unprocessed'
   get 'processs/:id' => 'play#processs', as: :processs
+  post 'upload' => 'play#create', as: :upload
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

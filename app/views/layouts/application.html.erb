@@ -18,8 +18,18 @@
 <div class="row">
 	<div class="col-xs-1"></div>
 	<div class="col-xs-8">
+		<%= form_tag(upload_path, :method => 'post', multipart: true) do %>
+			<label class="btn btn-lg btn-secondary" for="image">
+			<%= file_field_tag :image, accept: 'image/png,image/gif,image/jpeg',  style: 'display:none;', onchange: "this.form.submit();" %>upload image</label>
+		<% end %>
 	</div>
 	<div class="col-xs-3"></div>
+</div>
+
+<div class="row">
+	<div class="col-xs-4"></div>
+	<div class="col-xs-8">
+	</div>
 </div>
 
 <%= yield %>

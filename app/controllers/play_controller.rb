@@ -5,7 +5,7 @@ class PlayController < ApplicationController
   end
   
   def create
-    upload_params = params[:upload][:image]
+    upload_params = params[:image]
     @image = Image.new
     @image.save
     @image.upload(upload_params)
