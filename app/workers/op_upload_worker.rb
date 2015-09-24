@@ -1,8 +1,8 @@
-require 'base64'
-class OpResizeWorker
-  
+require "base64"
+class OpUploadWorker
+    
   def initialize
-    @operation = Operation.new(operation_type: 'process', status: 'running')
+    @operation = Operation.new(operation_type: 'upload', status: 'running')
   end
   
   include Sidekiq::Worker
@@ -21,14 +21,13 @@ class OpResizeWorker
     @operation.update(status: 'ko')
   end
   
-  def perform(image_id, image_src, width, height)
+  def perform(image_id, original_filename, file_read)
     @operation.update(image_id: image_id)
-    resized_src = image_src.rpartition('/')[0..-2].push("#{image_id}_resized.png").join('')
-    image = MiniMagick::Image.open(image_src)
-    image.resize "#{width}x#{height}"
-    image.format "png"
-    image.write resized_src
-    Image.find_by_id(image_id).update(resized_src: resized_src)
+    file_read = Base64.decode64(file_read)
+    File.open(Rails.root.join('public', 'imgs', original_filename), 'wb') do |file|
+      file.write(file_read)
+    end
+    Image.find_by_id(image_id).update(local_src: "public/imgs/#{original_filename}")
     @operation.update(status: 'ok')
   end
 end
