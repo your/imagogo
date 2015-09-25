@@ -1,5 +1,5 @@
 #imagogo
-Rails app to upload and process images using ruby-grid library (stub).
+Rails app to upload and process images using [ruby-grid](http://github.com/your/ruby-grid) library (stub).
 
 ![image](fun/statue_palm.png)
 
@@ -14,9 +14,9 @@ Rails app to upload and process images using ruby-grid library (stub).
 #how does it work
 There are 3 sidekiq workers:
 
-* **OpUploadWorker**: async uploads
-* **OpResizeWorker**: async server side img resize (using ImageMagick mini_magick wrapper)
-* **OpProcessWorker**: async server side image processing using a predefined template for ruby-grid
+* ```OpUploadWorker```: async uploads
+* ```OpResizeWorker```: async server side img resize (using ImageMagick mini_magick wrapper)
+* ```OpProcessWorker```: async server side image processing using a predefined template for ruby-grid
 
 When an upload is completed, a default resize is automatically applied.
 
