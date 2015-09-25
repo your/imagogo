@@ -1,5 +1,5 @@
 #imagogo
-Rails app to upload and process images using [ruby-grid](http://github.com/your/ruby-grid) library (stub).
+Rails app to upload and process images using [ruby-grid](https://github.com/your/ruby-grid) library (stub).
 
 ![image](fun/statue_palm.png)
 
@@ -14,9 +14,9 @@ Rails app to upload and process images using [ruby-grid](http://github.com/your/
 #how does it work
 There are 3 sidekiq workers:
 
-* ```OpUploadWorker```: async uploads
-* ```OpResizeWorker```: async server side img resize (using ImageMagick mini_magick wrapper)
-* ```OpProcessWorker```: async server side image processing using a predefined template for ruby-grid
+* **OpUploadWorker**: async uploads
+* **OpResizeWorker**: async server side img resize (using ImageMagick mini_magick wrapper)
+* **OpProcessWorker**: async server side image processing using a predefined template for ruby-grid
 
 When an upload is completed, a default resize is automatically applied.
 
@@ -31,14 +31,27 @@ Note: resize/process workers can be invoked after an Image object creation:
 	i.resize # => async call!
 	i.process # => BEWARE, won't run if resize is not completed!
 
+#demo
+![image](fun/demo.gif)
+
+#api (incomplete)
+###last op status for image_id
+	curl http://{domain:port}/op/{image_id}.json
+	
+	{
+		id: 163,
+		operation_type: "process",
+		status: "ok"
+	}
+###..
 #todo
-* js/redis polling for jobs completion/failure
+* js/redis polling for jobs completion/failure (50%)
 * appearance restyle / react.js V substitution
 * free parameters customization (or templates) for image processing
 * remote URL fetching
 * live processing preview
 * batch processing
-* processing API
+* processing API (10%)
 
 #techs
 * ruby 2.2.2
