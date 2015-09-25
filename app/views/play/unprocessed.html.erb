@@ -10,14 +10,16 @@
 		<div class="row">
 			<div class="col-xs-1"></div>
 			<div class="col-xs-8 img-box">
-	  	  		<div class="img-box-controls"><i class="fa fa-circle-o-notch fa-spin" id="loading" style="display:none;"></i>
+	  	  		<div class="img-box-controls"><i class="fa fa-circle-o-notch fa-spin" id="loader-<%= pi.id %>" style="display:none;"></i>
 					<%= link_to "process", processs_path(id: pi.id), remote: true %></div>
-	  			<div class="img-box-img">
+	  			<div class="img-box-img" id="img-<%= pi.id %>" style="display:none;">
+					<img src="imgs/<%= pi.id %>_resized.png">
 					<% if pi.resized_src.nil? %>
-					<script>$('#loading').show()</script>
+						<script>pollIt('<%= pi.id %>')</script>
 					<% else %>
-						<img src="<%= pi.resized_src.gsub('public/','') %>"></div>
+						<script>$('#img-'+'<%= pi.id %>').show()</script>
 					<% end %>
+				</div>
 			</div>
 			<div class="col-xs-3"></div>
 		</div>
