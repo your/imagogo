@@ -32,14 +32,14 @@ class PlayController < ApplicationController
     i = Image.find_by_id(image_id)
     i.process
     
-    respond_to do |format|
-      format.json { render :json => 'yeah' }
-    end
+    render :nothing => true
   end
   
   def destroy
     image_id = params[:id]
     i = ProcessedImage.find_by_id(image_id)
     i.destroy
+    
+    render :nothing => true
   end
 end
