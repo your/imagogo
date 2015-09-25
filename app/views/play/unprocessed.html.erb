@@ -13,7 +13,7 @@
 	  	  		<div class="img-box-controls"><i class="fa fa-circle-o-notch fa-spin" id="loading" style="display:none;"></i>
 					<%= link_to "process", processs_path(id: pi.id), remote: true %></div>
 	  			<div class="img-box-img">
-					<% if pi.local_src.nil? %>
+					<% if pi.resized_src.nil? %>
 					<script>$('#loading').show()</script>
 					<% else %>
 						<img src="<%= pi.resized_src.gsub('public/','') %>"></div>
